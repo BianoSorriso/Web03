@@ -1,0 +1,83 @@
+{% extends './partials/base.html' %}
+{% load static %}
+
+{% block title %}
+  Sobre a Ong
+{% endblock %}
+
+{% block content %}
+  <div class="banner-sobre">
+    <img src="{% static 'img/NossosValoresTitle.jpg' %}" alt="" />
+  </div>
+
+  <section class="sobre-container container" data-aos="fade-up">
+    <div class="sobre-item">
+      <h1 class="title">Sobre Nós</h1>
+      <p>Em 2011 em um trabalho da faculdade de
+        Comunicação Social, a Caroline Macedo
+        tinha como responsabilidade criar um
+        evento, e depois de se inspirar no filme
+        Patch Adams, criou no abrigo Dr. Romão
+         Mattos Duarte, no bairro Flamengo.
+        
+        A experiência foi passar a tarde na
+        instituição brincando e lanchando com as
+        crianças, sem doações. O grupo da
+        faculdade levou nota 10 e ainda se divertiu
+        muito com toda essa ação.</p>
+      <br />
+
+
+      <p>Em 2011 tentamos tirar do papel e transformar
+        em projeto, mas o grupo tinha interesses e
+        disponibilidades diferentes.
+        Em 2013, a Caroline participou de um
+        aniversário de uma amiga no abrigo Beija
+        Flor, em Austin e lá relembrou os momentos
+        especiais que já havia vivido..</p>
+      <br />
+
+
+
+      <p>Com a ajuda de 2 amigas e um post no
+        facebook que generalizou com mais de 30
+        inscritos, conseguimos colocar em prática a
+        Felicidade Compartilhada com o nosso
+        primeiro evento oficial como projeto sendo
+        realizado em um abrigo em Mesquita, o CAC -
+        Casa de Acolhimento e Cidadania.</p>
+
+
+
+    </div>
+  </section>
+
+  <section class="nossos-valores-container container" data-aos="fade-right">
+    <div class="nossos-valores-item">
+      <div>
+        <h1 class="text-serif-dados-bold">Nossos Valores</h1>
+        <p>Acreditamos que o verdadeiro impacto social começa com valores sólidos que orientam todas as nossas ações. Solidariedade, respeito e desenvolvimento pessoal estão no centro de tudo o que fazemos.</p>
+      </div>
+      <div>
+        <img src="{% static 'img/nossoValor.jpg' %}" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <article class="container" data-aos="fade-up" data-aos-delay="500">
+    <h1 class="title">“Ser referência em instrução e capacitação de
+      voluntários 
+      sendo reconhecida no Rio
+      de Janeiro inteiro devido suas ações sociais e o
+      impacto positivo realizado na vida de
+      milhares de pessoas através de 
+      seus eventos
+      e doações realizadas em instituições
+      carentes.”.</h1>
+  </article>
+{% endblock %}
+
+{% block script %}
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="{% static 'js/animation.js' %}"></script>
+{% endblock %}
