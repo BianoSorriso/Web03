@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Instituicao, Atividade
 from .models import RelatorioAnual
+from .models import QRCodePixFelicidade, QRCodePixParceiros
 
 
 class Filial(admin.ModelAdmin):
@@ -25,12 +26,16 @@ class InstituicaoAdmin(admin.ModelAdmin):
         return '-'
     
     mostrar_link_abrigo.short_description = 'Link Abrigo' 
-
-
-
+    
+@admin.register(QRCodePixFelicidade)
+class QRCodePixFelicidadeAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        if QRCodePixFelicidade.objects.exists():
+            return False
+        return super().has_add_permission(request)
+        
 admin.site.index_title = "Painel de Controle Felicidade Compartilhada"
 
 admin.site.register(Atividade)
 admin.site.register(RelatorioAnual)
-
-
+admin.site.register(QRCodePixParceiros)

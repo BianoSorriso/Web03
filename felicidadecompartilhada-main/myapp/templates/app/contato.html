@@ -7,7 +7,7 @@
 
 {% block content %}
   <div class="banner-sobre">
-    <img src="{% static 'img/contato.jpg' %}" alt="" />
+    <img src="{% static 'img/Contato.jpg' %}" alt="" />
   </div>
   <section class="sobre-container container" data-aos="fade-up">
     <div class="sobre-item">
@@ -35,27 +35,39 @@
 
       <div class="form-contato" data-aos="fade-left" data-aos-delay="600">
         <h1 style="margin-bottom: 20px">Preencha o formulário abaixo para que possamos ajudar com suas dúvidas!</h1>
-       
-        <form action="" method="post">
+        <form id="formulario" action="" method="post">
           {% csrf_token %}
-          
-          
+		<div>
+		  <label for="nome">Nome</label>
+		  <input type="text" name="nome" id="nome" />
+		  <div class="error">
+			<p></p>
+		  </div>
+		</div>
 
-       {% for field in form %}
-    <div>
-        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-        {{ field }}
-        {% if field.errors %}
-            <div class="error">
-                {% for error in field.errors %}
-                    <p>{{ error }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
-    </div>
-  {% endfor %}
+		<div>
+		  <label for="email">Email</label>
+		  <input type="email" name="email" id="email" />
+		  <div class="error">
+			<p></p>
+		  </div>
+		</div>
 
+		<div>
+		  <label for="idade">Idade</label>
+		  <input type="number" name="idade" id="idade" />
+		  <div class="error">
+			<p></p>
+		  </div>
+		</div>
 
+		<div>
+		  <label for="telefone">Telefone</label>
+		  <input type="tel" name="telefone" id="telefone" maxlength="11" />
+		  <div class="error">
+			<p></p>
+		  </div>
+		</div>
           <div>
             <button type="submit">
               Enviar
@@ -68,10 +80,171 @@
   </main>
 {% endblock %}
 {% block script %}
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script src="{% static 'js/animation.js' %}"></script>
+	<script>
+    window.onload = function () 
+	{
+      const form = document.getElementById('formulario')
+      const nome = document.getElementById('nome')
+      const email = document.getElementById('email')
+      const idade = document.getElementById('idade')
+      const telefone = document.getElementById('telefone')
 
+      const erroNome = nome.nextElementSibling.querySelector('p')
+      const erroEmail = email.nextElementSibling.querySelector('p')
+      const erroIdade = idade.nextElementSibling.querySelector('p')
+      const erroTelefone = telefone.nextElementSibling.querySelector('p')
+	  
+	  // Checagens que previnem e apagam caracteres que não sejam válidos em campos especificos
+	  
+	  nome.addEventListener('keydown', function(event) 
+	  {
+		const letrasPermitida = /^[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ ]$/
 
+		if (!letraPermitida.test(event.key) && event.key.length === 1) 
+		{
+		   event.preventDefault()
+		}
+	  })
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="{% static 'js/animation.js' %}"></script>
-  
+	  nome.addEventListener('input', function() 
+	  {
+		  this.value = this.value.replace(/[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ ]+/g, '')
+	  })
+	  
+	  telefone.addEventListener('keydown', function (event) 
+	  {
+		  const teclasPermitidas = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter']
+
+		  if (!/\d/.test(e.key) && !teclasPermitidas.includes(event.key)) 
+	      {
+		     event.preventDefault()
+	      }   
+	  })
+	  
+	  telefone.addEventListener('input', function () 
+	  {
+	       this.value = this.value.replace(/\D/g, '')
+	  })
+		
+	  
+	  // Inicio das checagens de validação do formulário que mostram texto de erro se houver algum e previne enviar
+	  // isSubmit é true quando chamado no input do Enviar, caso contrário, é false
+
+      function isNomeValido(isSubmit = false) 
+	  {
+		if (nome.value.length == 0 && isSubmit) 
+		{
+		   erroNome.innerText = 'Campo obrigatório'
+		   return false
+		}
+		
+		if (nome.value.replace(/\s/g, '').length < 3 && nome.value.length != 0) 
+		{
+		   erroNome.innerText = 'Nome muito curto.'
+		   return false
+		}
+		
+        if (nome.value.trim().split(/\s+/).length < 2 && nome.value.length != 0)
+		{
+           erroNome.innerText = 'Nome deve conter sobrenome.'
+           return false
+        }
+		
+		erroNome.innerText = ''
+		return true
+	}
+	
+      function isIdadeValida(isSubmit = false) 
+	  {
+        if (idade.value.length == 0 && isSubmit)
+		{
+			   erroIdade.innerText = 'Campo obrigatório.'  
+			   return false	   
+		}
+        if (idade.value < 18 && idade.value != '') 
+		{
+		   erroIdade.innerText = 'Você precisa ter pelo menos 18 anos para se voluntariar.'
+           return false
+        }
+
+        erroIdade.innerText = ''
+        return true
+      }
+
+      function isTelefoneValido(isSubmit = false) 
+	  {
+        const regexDDD = /^(\(?\d{2}\)?)[\s-]?(\d{4,5})-?(\d{4})$/
+
+        if (telefone.value.trim().length == 0) {
+          if (isSubmit) 
+		  {
+		     erroTelefone.innerText = 'Campo obrigatório.'
+		  }
+		  else 
+		  {
+		     erroTelefone.innerText = ''
+		  }
+          return false
+        }
+
+        if (!regexDDD.test(telefone.value.trim()))
+		{
+           erroTelefone.innerText = 'Telefone deve conter DDD.'
+           return false
+        }
+
+        erroTelefone.innerText = ''
+        return true
+      }
+
+      function isEmailValido(isSubmit = false) 
+	  {
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+        if (email.value.trim().length == 0) 
+		{
+          if (isSubmit) 
+		  {
+		     erroEmail.innerText = 'Campo obrigatório.'
+		  }
+          else 
+		  {
+		     erroEmail.innerText = ''
+		  }
+          return false
+        }
+
+        if (!regexEmail.test(email.value.trim())) 
+		{
+           erroEmail.innerText = 'Email inválido. Por favor, insira um email válido.'
+           return false
+        }
+
+        erroEmail.innerText = ''
+        return true
+      }
+
+	  // chama as funções ao clicar fora da caixa
+      nome.addEventListener('blur', () => isNomeValido())
+      idade.addEventListener('blur', () => isIdadeValida())
+      telefone.addEventListener('blur', () => isTelefoneValido())
+      email.addEventListener('blur', () => isEmailValido())
+
+	  // chama as funções ao clicar em enviar (com argumento isSubmit sendo true) e checa se todos os dados são válidos para permitir enviar
+      form.addEventListener('submit', function (event) 
+	  {
+        const nomeValido = isNomeValido(true)
+        const idadeValida = isIdadeValida(true)
+        const telefoneValido = isTelefoneValido(true)
+        const emailValido = isEmailValido(true)
+
+        if (!nomeValido || !idadeValida || !telefoneValido || !emailValido) 
+		{
+           event.preventDefault()
+        }
+      })
+	}
+	</script>
 {% endblock %}

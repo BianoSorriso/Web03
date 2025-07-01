@@ -1,0 +1,10 @@
+.env
+/cert
+.vscode
+*.bat
+*.pyc
+*.log
+*.pot
+*.pyc
+__pycache__/
+*.py[cod]

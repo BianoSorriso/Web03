@@ -2,6 +2,7 @@ from django import forms
 
 from django import forms
 from django.core.exceptions import ValidationError
+import re
 
 class ContatoForm(forms.Form):
     nome = forms.CharField(
@@ -22,9 +23,3 @@ class ContatoForm(forms.Form):
         required=True,
         widget=forms.TextInput(attrs={'id': 'telefone'})
     )
-
-    def clean_idade(self):
-        idade = self.cleaned_data['idade']
-        if idade < 18:
-            raise ValidationError("Você precisa ter pelo menos 18 anos para se voluntariar.")
-        return idade

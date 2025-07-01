@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-$psjgyyfj3nkw!%rsyrm%xzz+ela1r-(6%j2jz-6u$t&ftv0wq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "myapp.middleware.RateLimitMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -134,6 +135,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Adicionando o diretório estático onde os arquivos estão armazenados
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]

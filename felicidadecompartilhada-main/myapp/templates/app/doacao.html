@@ -117,55 +117,33 @@ Doar {% endblock %} {% block content %}
 
 
 
-
 <div class="fundo-valores">
   <div class="donation-form">
     <h2>Doe para a Felicidade Compartilhada.</h2>
-    <img src="{% static 'img/QRCODE_Felicidade_Compartilhada.png' %}" alt="QR Code de Doação" class="qrcode-img">
-    <p>Abra o aplicativo do seu banco e escaneie o código acima.</p>    
-    <h3> Chave Pix: felicidadecompartilhada.iza@gmail.com</h3>   
+    {% if qrcode_felicidade %}
+      <img src="{{ qrcode_felicidade.imagem.url }}" alt="QR Code de Doação" class="qrcode-img">
+      <p>Abra o aplicativo do seu banco e escaneie o código acima.</p>    
+      <h3>Chave Pix: {{ qrcode_felicidade.email }}</h3>
+    {% else %}
+      <p>Nenhum QR Code disponível no momento.</p>
+    {% endif %}
   </div>
 </div>
 
-
-
-
-
+{% if qrcodes %}
 <div class="carousel-container">
-   <h3>Você também pode doar para:</h3>
+  <h3>Você também pode doar para:</h3>
   <div class="carousel-track">
-    <div class="qrcode-card">
-      <h4>Abrigo Cabi</h4>
-      <img src="{% static 'img/QRCODE_Felicidade_Compartilhada.png' %}" alt="Abrigo Cabi">
-      <h4 class="pix-email">aguardando@chave.com</h4>
-    </div>
-    <div class="qrcode-card">
-      <h4>Casa Beija-Flor</h4>
-      <img src="{% static 'img/QRCODE_Felicidade_Compartilhada.png' %}" alt="Casa Beija-Flor">
-      <h4 class="pix-email">aguardando@chave.com</h4>
-    </div>
-    <div class="qrcode-card">
-      <h4>Instituto ABBA</h4>
-      <img src="{% static 'img/QRCODE_Felicidade_Compartilhada.png' %}" alt="Instituto ABBA">
-      <h4 class="pix-email">aguardando@chave.com</h4>
-    </div>
-     <div class="qrcode-card">
-      <h4>Abrigo Fundação Santa Bárbara</h4>
-      <img src="{% static 'img/QRCODE_Felicidade_Compartilhada.png' %}" alt="Fundação Santa Barbara">
-      <h4 class="pix-email">aguardando@chave.com</h4>
-    </div>
-
-     <div class="qrcode-card">
-      <h4>Casa de Acolhimento e Cidadania</h4>
-      <img src="{% static 'img/QRCODE_Felicidade_Compartilhada.png' %}" alt="CAC">
-      <h4 class="pix-email">aguardando@chave.com</h4>
-    </div>
-
-    <div class="qrcode-card">
-      <h4>Casa do Idoso para Todos os Povos</h4>
-      <img src="{% static 'img/QRCODE_Casa_De_Idosos_Todos_Os_Povos.png' %}" alt="CAC">
-      <h4 class="pix-email">acitp2010@gmail.com</h4>
-    </div>
+    {% for ong in qrcodes %}
+      <div class="qrcode-card">
+        <h4>{{ ong.nome }}</h4>
+        <img src="{{ ong.imagem.url }}" alt="{{ ong.nome }}">
+        <h4 class="pix-email">{{ ong.email }}</h4>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
 
     
     <!-- mais cards -->

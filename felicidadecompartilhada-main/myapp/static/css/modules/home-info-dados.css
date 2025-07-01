@@ -3,14 +3,11 @@
 .info-dados {
   background-color: var(--cor-base);
   margin: 0 auto;
- 
 }
 
 .grid-info-dados-container {
   display: grid;
   grid-template-columns: 5fr 7fr;
-  
-
 }
 
 .historia {
@@ -18,24 +15,20 @@
   padding: 80px 320px;
   grid-column: 1/-1;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
-  background-image: none !important;
+  grid-template-columns: repeat(3, 1fr);
+  /* justify-items: center; (Removido para alinhar itens) */
+  background-image: url("../../img/");
   background-repeat: no-repeat;
   background-size: auto 100%;
 }
-
-
-
 .historia ul {
   padding-left: 60px;
+  height: 130px;
 }
 
 .historia ul + ul {
   border-left: 1px solid #ccc;
 }
-
-
 
 .texto-doacao {
   background: 
@@ -50,7 +43,6 @@
   color: #fff;
   border-right: 3px solid #fff;
 }
-
 
 .texto-doacao p {
   margin-bottom: 60px;
@@ -154,6 +146,3 @@
     text-align: center;
   }
 }
-
-
-
