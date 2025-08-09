@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Projeto, Voluntario, Contato, Doacao
+from .models import Projeto, Voluntario, Contato, Doacao, ConfiguracaoSite
 
 @admin.register(Projeto)
 class ProjetoAdmin(admin.ModelAdmin):
@@ -23,3 +23,15 @@ class DoacaoAdmin(admin.ModelAdmin):
     list_display = ('nome_doador', 'tipo', 'valor', 'data_doacao')
     list_filter = ('tipo', 'data_doacao')
     search_fields = ('nome_doador', 'email_doador')
+
+@admin.register(ConfiguracaoSite)
+class ConfiguracaoSiteAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'chave_pix', 'nome_beneficiario')
+    
+    def has_add_permission(self, request):
+        # Verificar se já existe uma configuração
+        return not ConfiguracaoSite.objects.exists()
+    
+    def has_delete_permission(self, request, obj=None):
+        # Não permitir exclusão
+        return False

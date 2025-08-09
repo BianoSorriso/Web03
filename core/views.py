@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Projeto, Contato, Doacao, Voluntario
+from .models import Projeto, Contato, Doacao, Voluntario, ConfiguracaoSite
 from .forms import ContatoForm, DoacaoForm, VoluntarioForm
 
 def home(request):
@@ -59,4 +59,14 @@ def doacoes(request):
             return redirect('doacoes')
     else:
         form = DoacaoForm()
-    return render(request, 'pages/doacoes.html', {'form': form})
+    
+    # Obter configurações do site para o QR code PIX
+    try:
+        config = ConfiguracaoSite.objects.first()
+    except:
+        config = None
+        
+    return render(request, 'pages/doacoes.html', {
+        'form': form,
+        'config': config
+    })

@@ -1,6 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class ConfiguracaoSite(models.Model):
+    qr_code_pix = models.ImageField(upload_to='qr_codes/', verbose_name='QR Code PIX')
+    chave_pix = models.CharField(max_length=255, verbose_name='Chave PIX')
+    nome_beneficiario = models.CharField(max_length=255, verbose_name='Nome do Beneficiário')
+    
+    class Meta:
+        verbose_name = 'Configuração do Site'
+        verbose_name_plural = 'Configurações do Site'
+    
+    def __str__(self):
+        return 'Configurações do Site'
+    
+    def save(self, *args, **kwargs):
+        # Garantir que só exista uma instância
+        if ConfiguracaoSite.objects.exists() and not self.pk:
+            raise ValueError('Já existe uma configuração do site')
+        return super().save(*args, **kwargs)
+
 class Projeto(models.Model):
     titulo = models.CharField(max_length=200)
     descricao = models.TextField()

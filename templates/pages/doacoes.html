@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 
-{% block title %}ONG Solidária - Doações{% endblock %}
+{% block title %}Casa de Abrigo Israel - Doações{% endblock %}
 
 {% block content %}
 <!-- Banner da página -->
@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1 class="page-title">Faça uma Doação</h1>
+                <h1 class="page-title">Faça uma Doação para a CABI</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
                         <li class="breadcrumb-item"><a href="{% url 'home' %}">Início</a></li>
@@ -27,7 +27,7 @@
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <h2 class="section-title">Seu Apoio Transforma Vidas</h2>
                 <p class="lead">Cada contribuição faz a diferença na vida de quem mais precisa.</p>
-                <p>Na ONG Solidária, trabalhamos incansavelmente para transformar a realidade de comunidades vulneráveis através de projetos de educação, cultura, saúde e cidadania. Sua doação, independente do valor, é fundamental para mantermos e expandirmos nossas ações.</p>
+                <p>Na Casa de Abrigo Israel (CABI), trabalhamos incansavelmente para transformar a realidade de crianças e adolescentes através de projetos de educação, cultura, saúde e cidadania. Sua doação, independente do valor, é fundamental para mantermos e expandirmos nossas ações.</p>
                 <div class="impact-numbers mt-4">
                     <div class="row">
                         <div class="col-md-4 mb-3 mb-md-0">
@@ -79,22 +79,8 @@
                         <div class="card-body p-4">
                             <p>Contribua com qualquer valor para ajudar a manter nossos projetos. Você pode fazer uma doação única ou tornar-se um doador recorrente.</p>
                             
-                            <div class="donation-options mb-4">
-                                <div class="row g-2 mb-3">
-                                    <div class="col-4">
-                                        <div class="donation-amount-btn" data-value="20">R$ 20</div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="donation-amount-btn" data-value="50">R$ 50</div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="donation-amount-btn" data-value="100">R$ 100</div>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <span class="input-group-text">R$</span>
-                                    <input type="text" id="custom-amount" class="form-control" placeholder="Outro valor">
-                                </div>
+                            <div class="donation-info mb-4">
+                                <p>Faça sua doação diretamente via PIX para a Casa de Abrigo Israel. Basta escanear o QR Code abaixo com o aplicativo do seu banco.</p>
                             </div>
                             
                             <div class="payment-methods mb-4">
@@ -104,20 +90,28 @@
                                     <span>PIX - Forma de pagamento instantânea</span>
                                 </div>
                                 
-                                <div id="pix-qrcode-container" class="text-center mb-3" style="display: none;">
+                                <div id="pix-qrcode-container" class="text-center mb-3">
                                     <div class="card p-3 mb-3">
-                                        <h6 class="mb-3">Escaneie o QR Code para pagar</h6>
+                                        <h6 class="mb-3">Escaneie o QR Code para fazer sua doação</h6>
                                         <div id="pix-qrcode" class="mx-auto mb-3">
-                                            <!-- QR Code será inserido aqui via JavaScript -->
-                                            <img src="/static/images/qrcode-placeholder.svg" alt="QR Code PIX" class="img-fluid" style="max-width: 200px;">
+                                            {% if config and config.qr_code_pix %}
+                                                <img src="{{ config.qr_code_pix.url }}" alt="QR Code PIX CABI" class="img-fluid" style="max-width: 250px;">
+                                            {% else %}
+                                                <img src="/static/images/qrcode-placeholder.svg" alt="QR Code PIX" class="img-fluid" style="max-width: 250px;">
+                                                <p class="text-danger">QR Code ainda não configurado. Por favor, contate o administrador.</p>
+                                            {% endif %}
                                         </div>
-                                        <p class="mb-0 small">Valor: <span id="pix-amount">R$ 0,00</span></p>
+                                        {% if config %}
+                                            <p class="mb-2"><strong>Chave PIX:</strong> {{ config.chave_pix }}</p>
+                                            <p class="mb-0"><strong>Beneficiário:</strong> {{ config.nome_beneficiario }}</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="text-center">
-                                <button id="generate-pix" class="btn btn-primary btn-lg w-100">Gerar QR Code PIX</button>
+                                <p class="mb-3">Sua contribuição é muito importante para nós!</p>
+                                <p class="small">Após realizar a doação, se desejar um recibo, entre em contato conosco.</p>
                             </div>
                         </div>
                     </div>
@@ -145,7 +139,7 @@
                             
                             <div class="delivery-info mb-4">
                                 <h5>Pontos de Entrega</h5>
-                                <p><i class="fas fa-map-marker-alt text-danger me-2"></i> Sede da ONG: Rua das Flores, 123 - Centro</p>
+                                <p><i class="fas fa-map-marker-alt text-danger me-2"></i> Sede da CABI: Rua das Flores, 123 - Centro</p>
                                 <p><i class="fas fa-clock text-primary me-2"></i> Segunda a sexta, das 9h às 18h</p>
                             </div>
                             

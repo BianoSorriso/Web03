@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}ONG Solidária{% endblock %}</title>
+    <title>{% block title %}Casa de Abrigo Israel{% endblock %}</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,8 @@
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="/static/images/logo-cabi.svg" alt="Abrigo CABI" height="40">
+                <img src="/static/images/logo.svg" alt="Logo CABI" class="logo-img" style="height: 50px; margin-right: 10px;">
+                <span class="fw-bold text-primary">CABI</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -55,12 +56,7 @@
                             {% if user.is_staff %}
                             <li><a class="dropdown-item" href="{% url 'admin:index' %}">Administração</a></li>
                             {% endif %}
-                            <li>
-                                <form method="post" action="{% url 'logout' %}" class="m-0 p-0">
-                                    {% csrf_token %}
-                                    <button type="submit" class="dropdown-item">Sair</button>
-                                </form>
-                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
                         </ul>
                     </li>
                     {% else %}
@@ -95,7 +91,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <h5 class="text-white">ONG Solidária</h5>
+                    <h5 class="text-white">Casa de Abrigo Israel</h5>
                     <p class="text-light">Transformando vidas através da solidariedade e do amor ao próximo.</p>
                     <div class="social-icons">
                         <a href="#" class="text-light me-2"><i class="fab fa-facebook-f"></i></a>

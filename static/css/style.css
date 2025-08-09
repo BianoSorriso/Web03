@@ -1,25 +1,30 @@
 /* Estilos Gerais */
 :root {
-    --primary-color: #FF5757; /* Vermelho vivo */
-    --secondary-color: #33D1FF; /* Azul claro vivo */
-    --accent-color: #FFDE59; /* Amarelo vivo */
-    --dark-color: #5B4CF5; /* Roxo */
-    --light-color: #f8f9fc;
-    --danger-color: #FF5757;
-    --info-color: #33D1FF;
-    --success-color: #4CD964; /* Verde vivo */
-    --warning-color: #FFDE59;
+    --primary-color: #4e9af1; /* Azul mais claro e vibrante */
+    --secondary-color: #ff9e3d; /* Laranja mais vibrante */
+    --accent-color: #ffcf4a; /* Amarelo mais vibrante */
+    --dark-color: #5a5c69;
+    --light-color: #f0f8ff; /* Azul muito claro para o fundo */
+    --danger-color: #ff6b6b; /* Vermelho mais suave */
+    --info-color: #4ecdc4; /* Turquesa mais vibrante */
+    --background-pattern: url('/static/images/pattern.svg');
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     color: #333;
     line-height: 1.6;
+    background-color: var(--light-color);
+    background-image: var(--background-pattern);
+    background-attachment: fixed;
+    background-size: 300px;
+    background-repeat: repeat;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
+    color: var(--primary-color);
 }
 
 .titulo-secao {
@@ -36,10 +41,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Navbar */
 .navbar {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     padding: 1rem 0;
     background-color: white;
-    z-index: 1000;
+    border-bottom: 3px solid var(--accent-color);
 }
 
 .navbar-brand {
@@ -70,9 +75,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Footer */
 footer {
-    background-color: #2c3e50;
+    background-color: #4e9af1;
     color: #fff;
     padding: 3rem 0 1rem;
+    border-top: 3px solid var(--accent-color);
 }
 
 footer h5 {
@@ -127,12 +133,11 @@ footer .footer-bottom {
 .btn-primary {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
-
-    
 }
 
 .btn-primary:hover {
-    
+    background-color: #3a5ecc;
+    border-color: #3a5ecc;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -154,31 +159,12 @@ footer .footer-bottom {
     border-color: var(--primary-color);
 }
 
-.btn-outline-primary:hover {   
+.btn-outline-primary:hover {
+    background-color: var(--secondary-color);
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(63, 9, 9, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-
-/* alteração de botão */
-
-
-.btn-outline-primary {
-  --bs-btn-color: var(--secondary-color);
-  --bs-btn-border-color:var(--secondary-color);
-  --bs-btn-hover-bg:var(--secondary-color);
-  --bs-btn-hover-border-color: var(--secondary-color);
-  --bs-btn-hover-color: white;
-
-  --bs-btn-active-bg:var(--secondary-color);
-  --bs-btn-active-border-color: var(--secondary-color);
-  --bs-btn-active-color: white;
-}
-
-
-
-
 
 /* Cards */
 .card {
@@ -819,7 +805,8 @@ footer .footer-bottom {
 .page-banner {
     position: relative;
     padding: 3rem 0;
-    background-color: #f8f9fa;
+    background-color: white;
+    border-bottom: 3px solid var(--accent-color);
     margin-bottom: 2rem;
 }
 
