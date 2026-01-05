@@ -7,16 +7,17 @@ class RateLimitMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.method == 'POST' and request.path == '/contato/':
-            ip = request.META.get('REMOTE_ADDR')
+        if request.method == 'POST' and request.path.startswith('/contato'):
+            ip = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR'))
             key = f'rate_limit_{ip}'
             last_request_time = cache.get(key)
             current_time = time.time()
 
-            if last_request_time and current_time - last_request_time < 300:  # 1 minuto
-                return HttpResponseForbidden("Você está enviando solicitações muito rapidamente. Tente novamente mais tarde.")
+            if last_request_time and current_time - last_request_time < 30:
+                return HttpResponseForbidden(
+                    "Você está enviando solicitações muito rapidamente. Tente novamente mais tarde."
+                )
 
-            cache.set(key, current_time, timeout=300)  # 1 minuto
+            cache.set(key, current_time, timeout=30)
 
-        response = self.get_response(request)
-        return response
+        return self.get_response(request)
