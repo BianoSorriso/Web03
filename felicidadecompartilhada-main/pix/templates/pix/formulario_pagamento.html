@@ -1,0 +1,19 @@
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <!-- Exibe os campos do formulário -->
+
+  {% if form.errors %}
+  <div class="errors">
+    {% for field in form %} {% if field.errors %}
+    <div class="error">
+      <strong>{{ field.label }}:</strong>
+      {% for error in field.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+  {% endif %}
+
+  <button type="submit">Submeter</button>
+</form>

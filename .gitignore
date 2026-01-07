@@ -1,0 +1,14 @@
+.env
+/cert
+.vscode
+*.bat
+*.pyc
+*.log
+*.pot
+*.pyc
+__pycache__/
+*.py[cod]
+db.sqlite3
+media/
+staticfiles/
+

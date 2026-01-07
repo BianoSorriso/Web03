@@ -1,0 +1,404 @@
+{% extends './partials/base.html' %} {% load static %} {% block title %} Quero
+Doar {% endblock %} {% block content %}
+
+<div id="modalPagamento" class="modal" style="display: none;">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Pix Gerado com Sucesso!</h2>
+      <p>Nome: <strong>{{ form.cleaned_data.nome }}</strong></p>
+      <p>Nome: <strong>{{ form.cleaned_data.email }}</strong></p>
+      <p>Status: <strong>{{ status }}</strong></p>
+      <p>Valor: <strong>R$ {{ form.cleaned_data.valor }}</strong></p>
+
+      <div class='centerthis'> 
+      <img src="{{ imagem_qrcode }}" alt="QR Code" />
+      <p><a href="{{ link_visualizacao }}" target="_blank" class="visualizar-pagamento">Visualizar pagamento</a></p>
+      <p>{{form.cleaned_data.mensagem }}</p>
+      </div>
+      <div class="mt-4">
+        <a class="btn btn-primary" onclick="copiarTexto('{{ qr_code }}')">Pix copia e cola</a>
+      </div>
+  </div>
+</div>
+
+<div class="banner-sobre">
+  <img src="{% static 'img/BannerNovo.jpg'%}" alt="" />
+</div>
+
+
+<section class="container">
+  <div class="sobre-container-doacao" data-aos="fade-up">
+    <div class="sobre-item-doacao">
+      <h1 class="title">Doação</h1>
+      <p>
+        No Rio de Janeiro e Baixada Fluminense, muitas crianças enfrentam grandes desafios devido à desigualdade social e à falta de recursos. Organizações não governamentais (ONGs) que atuam nessas regiões desempenham um papel essencial ao oferecer apoio crucial, como alimentação, educação de qualidade e suporte emocional, ajudando essas crianças a superar as adversidades que enfrentam.
+
+      </p>
+      <br/>
+      <p>
+        Sua doação é fundamental para garantir que esses serviços continuem a beneficiar centenas de crianças e suas famílias, proporcionando uma oportunidade de mudança real. Ao contribuir, você está apoiando projetos que promovem inclusão social, capacitação e abrem portas para um futuro melhor, criando condições para que essas crianças tenham uma vida mais digna e cheia de possibilidades.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="carrossel-doacao" data-aos="fade-right">
+  <div class="slider">
+    <div class="slides">
+      <input type="radio" name="radio-btn" id="radio1" />
+      <input type="radio" name="radio-btn" id="radio2" />
+      <input type="radio" name="radio-btn" id="radio3" />
+      <input type="radio" name="radio-btn" id="radio4" />
+
+      <div class="slide first">
+        <!--inicio de imagens -->
+        <img src="{%static 'img/Materiais01.jpg'%}" alt="imagem 1" />
+        <div class="info">
+          <div class="ctrl">
+            <h1>R$ 15</h1>
+            <br />
+            <p>Ajude na aquisição de recursos para o abrigo <span style="color: #5f5b5f; font-weight: bold; text-decoration: underline;">Casa Beija-Flor.</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="{%static 'img/Alimentacao02.jpg'%}" alt="imagem 2" />
+        <div class="info">
+          <div class="ctrl">
+            <h1>R$ 20</h1>
+            <br />
+            <p>
+              Doe para o abrigo fundação <span style="color: #5f5b5f; font-weight: bold; text-decoration: underline;">Santa Barbára</span> e ajude com alimentos para as crianças.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="{%static 'img/CestaBasica03.jpg'%}" alt="imagem 3" />
+        <div class="info">
+          <div class="ctrl">
+            <h1>R$ 25</h1>
+            <br />
+            <p> Doe para o <span style="color: #5f5b5f; font-weight: bold; text-decoration: underline;">ACITP</span> e ajude com fraldas geriátricas, produtos de higiene e alimentos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <!--fim de imagens -->
+        <img src="{%static 'img/Criancas04.jpg'%}" alt="imagem 4" />
+        <div class="info">
+          <div class="ctrl">
+            <h1>R$ 30</h1>
+            <br />
+            <p>Ajuda as crianças do abrigo <span style="color: #5f5b5f; font-weight: bold; text-decoration: underline;">CABI.</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation-auto">
+        <div class="auto-btn1"></div>
+        <div class="auto-btn2"></div>
+        <div class="auto-btn3"></div>
+        <div class="auto-btn4"></div>
+      </div>
+
+      <div class="manual-navigation">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="fundo-valores">
+  <div class="donation-form">
+    <h2>Doe para a Felicidade Compartilhada.</h2>
+    {% if qrcode_felicidade %}
+      <img src="{{ qrcode_felicidade.imagem.url }}" alt="QR Code de Doação" class="qrcode-img">
+      <p>Abra o aplicativo do seu banco e escaneie o código acima.</p>    
+      <h3>Chave Pix: {{ qrcode_felicidade.email }}</h3>
+    {% else %}
+      <p>Nenhum QR Code disponível no momento.</p>
+    {% endif %}
+  </div>
+</div>
+
+{% if qrcodes %}
+<div class="carousel-container">
+  <h3>Você também pode doar para:</h3>
+  <div class="carousel-track">
+    {% for ong in qrcodes %}
+      <div class="qrcode-card">
+        <h4>{{ ong.nome }}</h4>
+        <img src="{{ ong.imagem.url }}" alt="{{ ong.nome }}">
+        <h4 class="pix-email">{{ ong.email }}</h4>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+    
+    <!-- mais cards -->
+  </div>
+</div>
+
+
+
+
+
+
+<!-- TRECHO ORIGINAL ABAIXO -->
+
+
+
+ {% comment %}
+ <form method="post" id='formf' action="{% url 'doacao' %} ">
+  {% csrf_token %}
+  
+  <div class="fundo-valores">
+    <div class="donation-form">
+
+     
+      
+      
+      <h2>Selecione o Valor</h2>
+
+       <!--Campos customizados com inputs radio -->
+       
+     
+
+      <div class="custom-radio">
+        <input id="radio-1" type="radio" name="valor" value="50" onclick="clearCustomValue()" checked/>
+        <label for="radio-1" class="amount-option">
+          <span>
+            <div class="vai">
+              <p>R$ 15,00</p>
+            </div>
+          </span>
+        </label>
+      </div>
+      
+
+
+
+
+      <div class="custom-radio">
+        <input id="radio-2" type="radio" name="valor" value="100" onclick="clearCustomValue()"/>
+        <label for="radio-2" class="amount-option">
+          <span>
+            <div class="vai">
+              <p>R$ 20,00</p>
+            </div>
+          </span>
+        </label>
+      </div>
+
+
+      
+      <div class="custom-radio">
+        <input id="radio-3" type="radio" name="valor" value="250" onclick="clearCustomValue()"/>
+        <label for="radio-3" class="amount-option">
+          <span>
+            <div class="vai">
+              <p>R$ 25,00</p>
+            </div>
+          </span>
+        </label>
+      </div>
+      
+      <div class="custom-radio">
+        <input id="radio-4" type="radio" name="valor" value="1000" onclick="clearCustomValue()"/>
+        <label for="radio-4">
+          <span>
+            <div class="vai">
+              <p>R$ 30,00</p>
+            </div>
+          </span>
+        </label>
+      </div>
+
+
+      
+
+      <!-- Campo de valor personalizado -->
+      <div class="custom-radio especial-radio">
+        <input id="radio-5" type="radio" name="custom" value="custom" onclick="enableCustomValue()"/>
+        <label for="radio-5">
+          <span>
+            <div class="vai">
+              <input id="usounico" type="number" name="valor" placeholder="Digite outro valor" pattern="^\d+(\.\d{1,2})?$" disabled>
+            </div>
+          </span>
+        </label>
+      </div>
+
+      
+
+      <!-- Textarea para mensagem -->
+      <div>
+        <textarea name="mensagem" placeholder="Nos encaminhe uma mensagem (opcional)"></textarea>
+      </div>
+      
+      <br>
+      <h3>Informações do Doador</h3>
+      <hr>
+      <br>
+
+      <div class="input-wrapper-wrapper">
+        <!-- Nome -->
+        <div class="input-wrapper">
+          <label class='label-down' for="nome">Nome</label>
+          <input class='input-down' type="text" id="nome" name="nome" required>
+        </div>
+
+        <!-- CPF -->
+        <div class="input-wrapper">
+          <label class='label-down' for="cpf">CPF</label>
+          <input class='input-down' type="number" id="cpf" name="cpf" required>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="input-wrapper">
+        <label class='label-mail' for="mail">Email</label>
+        <input class='input-mail' type="email" id="mail" name="email" required>
+      </div>
+      
+      <button type="submit">Prosseguir para Pagamento</button>
+
+     
+    </div>
+     
+  </div>
+ 
+</form>
+
+{% endcomment %}
+
+
+
+    <div class="frase">
+      <p>A doação é um ato solidário que preenche a alma e semeia a esperança!!!</p>
+      <br /><br />
+      <p class="second"></p>
+    </div>
+
+    {% endblock content %} {% block script %}
+
+    <script>
+      // Função para copiar texto para a área de transferência
+      function copiarTexto(texto) {
+        navigator.clipboard
+          .writeText(texto)
+          .then(() => {
+            alert('Texto copiado com sucesso!');
+          })
+          .catch((err) => {
+            alert('Falha ao copiar texto: ' + err);
+          });
+      }
+    
+      // Script para realizar o ciclo de seleção automática de rádio
+      let count = 1;
+      let intervalId;
+      let click = false;
+    
+      document.getElementById('radio1').checked = true;
+    
+      function startCycle() {
+        if (intervalId) {
+          clearInterval(intervalId);
+        }
+        intervalId = setInterval(function () {
+          if (!click) {
+            proximagem();
+          }
+        }, 4500);
+      }
+    
+      function proximagem() {
+        count++;
+        if (count > 4) {
+          count = 1;
+        }
+    
+        document.getElementById('radio' + count).checked = true;
+      }
+    
+      // Evento para quando o usuário clica em um rádio, o ciclo é interrompido temporariamente
+      const radios = document.querySelectorAll('input[name="radio-btn"]');
+      radios.forEach((radio) => {
+        radio.addEventListener('click', function () {
+          click = true;
+    
+          startCycle();
+    
+          setTimeout(() => {
+            click = false;
+          }, 500);
+        });
+      });
+    
+      startCycle();
+      
+      // Código para gerenciar o modal de pagamento
+      document.addEventListener('DOMContentLoaded', function () {
+        {% if qr_code %}
+          // Exibe o modal
+          var modal = document.getElementById("modalPagamento");
+          var span = document.getElementsByClassName("close")[0];
+          modal.style.display = "block";
+          
+          // Fecha o modal quando o usuário clicar no "x"
+          span.onclick = function() {
+            modal.style.display = "none";
+          }
+    
+          // Fecha o modal se o usuário clicar fora da janela
+          window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          }
+        {% endif %}
+      });
+    </script>
+
+    <script>
+      function clearCustomValue() {
+        // Limpa o campo de valor personalizado
+        document.getElementById('usounico').value = ''; 
+        document.getElementById('usounico').disabled = true; // Desabilita o campo
+    
+        // Desmarca o radio button de valor personalizado
+        const customRadio = document.getElementById('radio-5');
+        customRadio.checked = false; 
+      }
+    
+      function enableCustomValue() {
+        document.getElementById('usounico').disabled = false; // Habilita o campo de valor personalizado
+    
+        // Desmarca os outros radio buttons
+        const radios = document.getElementsByName('valor');
+        for (let radio of radios) {
+          if (radio !== document.getElementById('radio-5')) {
+            radio.checked = false; // Desmarcar todos os outros radio buttons
+          }
+        }
+      }
+    </script>
+    <!-- Bibliotecas externas -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static 'js/animation.js' %}"></script>
+
+    {% endblock script %}
+  </div>
+</div>

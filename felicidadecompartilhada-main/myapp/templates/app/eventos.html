@@ -1,0 +1,69 @@
+{% extends './partials/base.html' %}
+{% load static %}
+
+{% block title %}
+  Eventos
+{% endblock %}
+
+{% block content %}
+<div class="banner-sobre">
+    <img src="{% static 'img/eventos.jpg' %}" alt="" />
+  </div>
+  <section class="sobre-container container" data-aos="fade-up">
+    <div class="sobre-item">
+      <h1 class="title">Eventos</h1>
+      <p style="text-align: center">Confira aqui todos os nossos próximos eventos.</p>
+    </div>
+  </section>
+  <main class="container">
+    
+    <!--<div class="evento-item">
+      <h1>Páscoa Solidária</h1>
+      <img src="{% static 'img/EventoPascoa.png' %}" alt="" />
+      <h1>27 de abril de 2025</h1>
+      <p>
+        Horários: <span class="cp">às 13h</span>
+      </p>
+      <p>
+        PIX: <span class="cp">felicidadecompartilhada.iza@gmail.com</span>
+      </p>
+      <div>
+        <a href="https://www.instagram.com/p/DIKStGoOfzf/?igsh=MWI1aW90cTVoaHZq" target="_blank" class="cp">
+          Ver postagem
+          <img src="{% static 'img/ver-postagem-seta.svg' %}" alt="" />
+        </a>
+      </div>
+    </div> -->
+
+    {% if eventos %}
+    {% for el in eventos  %}
+    <div class="evento-item">
+      <h1>{{el.nome}}</h1>
+      <img src="{{el.imagem.url}}" alt="" />
+      <h1>{{el.data}}</h1>
+      <p>
+        Horários: <span class="cp">{{el.hora}}</span>
+      </p>
+      <p>
+        Informações: <span class="cp">21 99999-9999</span>
+      </p>
+      <p>
+        Doe via PIX: <span class="cp">{{ el.Pix }}</span>
+      </p>
+
+
+      <div>
+        <a href="{{el.link_postagem}}" target="_blank" class="cp">
+          Ver postagem
+          <img src="{% static 'img/ver-postagem-seta.svg' %}" alt="" />
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </main>
+{% endblock %}
+{% block script %}
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="{% static 'js/animation.js' %}"></script>
+{% endblock %}

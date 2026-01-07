@@ -1,0 +1,329 @@
+{% extends './partials/base.html' %}
+{% load static %}
+
+{% block title %}
+  ONG Felicidade Compartilhada
+{% endblock %}
+
+{% block content %}
+  <div class="banner">
+    <div class="" data-aos="fade-left">
+      <h1>
+        Alegria Compartilhada,<br />
+        é alegria redobrada
+      </h1>
+
+      <a href="{% url 'doacao' %}" class="btn-ajude">apoie-nos</a>
+    </div>
+  </div>
+
+  <section class="ong-apresentacao">
+    <div class="" data-aos="fade-down" data-aos-delay="600">
+      <h1>Somos a ONG Felicidade Compartilhada</h1>
+      <p>Nossa missão  é incentivar, instruir,
+        capacitar e motivar pessoas comuns a se tornarem
+        voluntárias dentro do nosso calendário de ações anuais
+        e também em projetos individuais, fora da nossa
+        instituição.</p>
+      <a href="{% url 'sobre' %}" class="btn-nossahistoria">nossa história</a>
+    </div>
+  </section>
+
+
+  <main>
+
+    <section class="atividades">
+      <div class="atividades-container">
+        <h1 class="title cp" data-aos="fade-down">Nossas Atividades</h1>
+      </div>
+
+
+      <div class="grid-cards-container">
+        <div class="card" data-aos="fade-right" data-aos-delay="400">
+          <a>
+            <div class="card-img">
+              <img src="{% static 'img/PlantandoEsperanca.jpg' %}" alt="" />
+            </div>
+            <div class="card-title">
+              <p class="subtitle cp">Plantando Esperança</p>
+            </div>
+          </a>
+          <div class="card-copy">
+            <p class="subtitle">Plantando Esperança</p>
+            <p class="card-copy-text">"Plantando Esperança" é uma das atividades mais queridas da nossa ONG. Mais do que plantar, esse momento é de conexão — com a terra, com a comunidade e com o futuro. Voluntários, educadores e moradores se unem para transformar espaços e cultivar valores como responsabilidade, solidariedade e respeito pela natureza.</p>
+            <a>Saiba mais</a>
+          </div>
+        </div>
+
+        <div class="card" data-aos="fade-right" data-aos-delay="450">
+          <a>
+            <div class="card-img">
+              <img src="{% static 'img/Natal2025.jpg' %}" alt="" />
+            </div>
+            <div class="card-title">
+              <p class="subtitle cp">Natal Solidário</p>
+            </div>
+          </a>
+          <div class="card-copy">
+            <p class="subtitle">Natal Solidário</p>
+            <p class="card-copy-text">O Natal Solidário é um momento especial de acolhimento, partilha e amor. Nessa ação, a ONG mobiliza voluntários e parceiros para levar alegria às crianças e famílias em situação de vulnerabilidade, por meio da entrega de presentes, cestas básicas e atividades recreativas.</p>
+            <a>Saiba mais</a>
+          </div>
+        </div>
+
+        <div class="card" data-aos="fade-right" data-aos-delay="500">
+          <a>
+            <div class="card-img">
+              <img src="{% static 'img/Bailinho.jpg' %}" alt="" />
+            </div>
+            <div class="card-title">
+              <p class="subtitle cp">Bailinho da Terceira Idade</p>
+            </div>
+          </a>
+          <div class="card-copy">
+            <p class="subtitle">Bailinho da Terceira Idade</p>
+            <p class="card-copy-text"> O Bailinho da Terceira Idade foi criado especialmente para nossos idosos, o evento promove momentos de descontração, dança, música ao vivo e muita animação.
+
+              É um espaço onde cada sorriso importa, onde o respeito e o carinho se transformam em passos de dança. Mais do que entretenimento, o bailinho fortalece vínculos, combate a solidão e valoriza quem tanto já contribuiu com sua história e experiência.</p>
+            <a>Saiba mais</a>
+          </div>
+        </div>
+
+        <div class="card" data-aos="fade-right" data-aos-delay="400">
+          <a>
+            <div class="card-img">
+              <img src="{% static 'img/Arraia02.jpg' %}" alt="" />
+            </div>
+            <div class="card-title">
+
+              <p class="subtitle cp">Arraiá Solidário</p>
+            </div>
+          </a>
+            <div class="card-copy">
+            <p class="subtitle">Arraiá Solidário</p>
+            <p class="card-copy-text">Comidas típicas, quadrilhas, brincadeiras e muita música animam a celebração, enquanto unimos a comunidade em prol de uma causa maior. Toda a renda arrecadada com as barracas é revertida para projetos sociais da ONG, fortalecendo ainda mais nossas ações. É tempo de alegria, união e de fazer o bem, com um sorriso no rosto e o coração cheio de esperança!.</p>
+            <a>Saiba mais</a>
+          </div>
+        </div>
+
+        <div class="card" data-aos="fade-right" data-aos-delay="450">
+          <a>
+            <div class="card-img">
+              <img src="{% static 'img/ApadrinheUmSonho.jpg' %}" alt="" />
+            </div>
+            <div class="card-title">
+              <p class="subtitle cp">Apadrinhe Um Sonho</p>
+            </div>
+          </a>
+          <div class="card-copy">
+            <p class="subtitle">Apadrinhe um Sonho</p>
+            <p class="card-copy-text">Cada pessoa atendida pela nossa ONG escreve uma cartinha com um sonho — seja um presente, uma necessidade ou um simples desejo de carinho. Você pode escolher uma dessas cartinhas e se tornar o padrinho ou madrinha que tornará esse sonho possível. Um gesto simples, que enche de significado o coração de quem doa... e de quem recebe.</p>
+
+            <a>Saiba mais</a>
+          </div>
+        </div>
+
+        <div class="card" data-aos="fade-right" data-aos-delay="500">
+          <a>
+            <div class="card-img">
+              <img src="{% static 'img/Gentileza02.jpg' %}" alt="" />
+            </div>
+            <div class="card-title">
+              <p class="subtitle cp">Gentileza nas Ruas</p>
+            </div>
+          </a>
+          <div class="card-copy">
+            <p class="subtitle">Gentileza nas Ruas</p>
+            <p class="card-copy-text">Gentileza nas Ruas nasce do desejo de levar dignidade, carinho e cuidado para pessoas em situação de vulnerabilidade. Voluntários se unem para distribuir kits com alimentos, roupas, itens de higiene e, principalmente, palavras de acolhimento. Mais do que doar, é sobre olhar nos olhos, ouvir histórias e oferecer um pouco de afeto. </p>
+            <a>Saiba mais</a>
+          </div>
+        </div>
+
+        <div class="card" data-aos="fade-right" data-aos-delay="400">
+          <a>
+            <div class="card-img">
+              <img src="{% static 'img/BazarSolidario.jpg' %}" alt="" />
+            </div>
+            <div class="card-title">
+              <p class="subtitle cp">Bazar Solidário</p>
+            </div>
+          </a>
+          <div class="card-copy">
+            <p class="subtitle">Bazar Solidário</p>
+            <p class="card-copy-text">O Bazar Solidário é uma iniciativa que une sustentabilidade, solidariedade e oportunidades. Roupas, calçados, acessórios e objetos diversos são arrecadados, organizados com carinho e vendidos a preços simbólicos para a comunidade. Toda a renda é revertida para os projetos sociais da ONG. Além de ajudar quem precisa, o bazar incentiva o consumo consciente e promove um ciclo de generosidade onde cada doação ganha um novo propósito.</p>
+            <a>Saiba mais</a>
+          </div>
+        </div>
+
+        <div class="card" data-aos="fade-right" data-aos-delay="450">
+          <a>
+            <div class="card-img">
+              <img src="{% static 'img/DiaDasCriancas25.jpg' %}" alt="" />
+            </div>
+            <div class="card-title">
+              <p class="subtitle cp">Dia das Crianças</p>
+            </div>
+          </a>
+          <div class="card-copy">
+            <p class="subtitle">Dia das Crianças</p>
+            <p class="card-copy-text">No Dia das Crianças, a alegria toma conta! Organizamos uma grande festa repleta de brincadeiras, música, guloseimas e surpresas para celebrar essa fase tão especial da vida. É um momento em que cada sorriso vale ouro e cada olhar brilha com esperança. Com o apoio de voluntários e parceiros, proporcionamos um dia inesquecível para as crianças atendidas pela ONG, reforçando o quanto elas são amadas, cuidadas e valorizadas.</p>
+            <a>Saiba mais</a>
+          </div>
+        </div>
+
+        <div class="card" data-aos="fade-right" data-aos-delay="500">
+          <a>
+            <div class="card-img">
+              <img src="{% static 'img/PascoaNasRuas.jpg' %}" alt="" />
+            </div>
+            <div class="card-title">
+              <p class="subtitle cp">Ação nas Ruas</p>
+            </div>
+          </a>
+          <div class="card-copy">
+            <p class="subtitle">Ação nas Ruas</p>
+            <p class="card-copy-text"> Ação nas Ruas é uma iniciativa solidária que leva acolhimento e esperança a pessoas em situação de rua. Por meio da distribuição de alimentos, itens de higiene e palavras de afeto, voluntários compartilham cuidado, respeito e empatia. Mais do que doações, a ação promove encontros humanos e reforça o valor da dignidade e da solidariedade em cada gesto.</p>
+            <a>Saiba mais</a>
+          </div>
+        </div>
+
+        <div class="card" data-aos="fade-right" data-aos-delay="400">
+          <a>
+            <div class="card-img">
+              <img src="{% static 'img/DoeVida.jpg' %}" alt="" />
+            </div>
+            <div class="card-title">
+              <p class="subtitle cp">Seja um Doador</p>
+            </div>
+          </a>
+          <div class="card-copy">
+            <p class="subtitle">Seja um Doador</p>
+            <p class="card-copy-text">Por meio de campanhas de doação de sangue, mobilizamos a comunidade para ajudar hospitais e bancos de sangue em momentos de maior necessidade.
+              Nossa missão é conectar solidariedade e ação: cada doador representa uma chance real de salvar vidas.
+              Junte-se a nós. Seja parte dessa corrente do bem..</p>
+            <a>Saiba mais</a>
+          </div>          
+        </div>
+
+
+       
+            
+      </div>
+
+      
+      <!-- fim do grid cards -->
+    </section>
+    <!-- fim section atividades -->
+
+    <section class="info-dados">
+      <div class="grid-info-dados-container">
+        <div class="historia">
+          <ul>
+            <li class="title-dados">Fundada em 2013</li>
+            <li class="text-serif-dados">12 anos</li>
+          </ul>
+          <ul>
+            <li class="title-dados">Pessoas atendidas</li>
+            <li class="text-serif-dados">+1000</li>
+          </ul>
+          <ul>
+            <li class="title-dados">Doações</li>
+            <li class="text-serif-dados">+ de 50 toneladas</li>
+          </ul>
+          <ul style="border-left: none;">
+            <li class="title-dados">Fundadora</li>
+            <li class="text-serif-dados">Caroline Macedo</li>
+          </ul>
+		  <ul>
+            <li class="title-dados">Presidente</li>
+            <li class="text-serif-dados">Caroline Macedo</li>
+          </ul>
+		  <ul>
+            <li class="title-dados">Vice Presidentes</li>
+            <li class="text-serif-dados">Isabele Couto e Rone Bastos</li>
+          </ul>
+        </div>
+        <div class="texto-doacao">
+          <p>
+            Com o seu apoio conseguimos atender
+            <span class="cd">mais de 1000 pessoas</span> e a continuar transformando vidas em
+            <span class="cd">Nova Iguaçu e Baixada Fluminense</span>.
+          </p>
+          <a href="{% url 'doacao' %}" class="btn-doar">doe agora</a>
+        </div>
+
+        <div class="doacao-valores">
+          <ul>
+            <li>
+              <img src="{% static 'img/moeda.png' %}" alt="" data-aos="zoom-in-up" />
+            </li>
+            <li>
+              R$ <span class="counter" data-target="15">0</span>
+            </li>
+            <li>Ajude na aquisição de recursos para o abrigo <span class="cd">Casa Beija-Flor.</span></li>
+          </ul>
+          <ul>
+            <li>
+              <img src="{% static 'img/prato2.png' %}" alt="" data-aos="zoom-in-up" />
+            </li>
+            <li>
+              R$ <span class="counter" data-target="20">0</span>
+            </li>
+            <li>Doe para o abrigo fundação <span class="cd"> Santa Barbára </span> e ajude com alimentos para as crianças.</li>
+          </ul>
+          <ul>
+            <li>
+              <img src="{% static 'img/higiene03.png' %}" alt="" data-aos="zoom-in-up" />
+            </li>
+            <li>
+              R$ <span class="counter" data-target="25">0</span>
+            </li>
+            <li> Doe para o <span class="cd"> ACITP </span> e ajude com fraldas geriátricas, produtos de higiene e alimentos.</li>
+          </ul>
+          <ul>
+            <li>
+              <img src="{% static 'img/reformas.png' %}" alt="" data-aos="zoom-in-up" />
+            </li>
+            <li>
+              R$<span class="counter" data-target="30">0</span>
+            </li>
+            <li> Doe para o <span class="cd">CABI</span> e ajude na manutenção da casa de amparo em Tinguá, Nova Iguaçu.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="coleta-email-container">
+      <div class="coleta-email-item" data-aos="fade-up">
+        <h1>Junte-se a nossa lista de e-mails, inscreva-se abaixo</h1>
+        <form action="" method="POST">
+          {% csrf_token %}
+          <label for="nome">Nome <span class="cd">*</span></label>
+          <input type="text" id="nome" name="nome" />
+          <label for="sobrenome">Sobrenome <span class="cd">*</span></label>
+          <input type="text" id="sobrenome" name="sobrenome" />
+          <label for="email">Email <span class="cd">*</span></label>
+          <input type="email" id="email" name="email" />
+          <button type="submit" class="btn-inscrever">Inscrever-se</button>
+        </form>
+      </div>
+    </section>
+  </main>
+{% endblock %}
+
+{% block script %}
+  <script>
+    // Função que altera o delay baseado no tamanho da tela
+    function updateAosDelay() {
+      const card = document.querySelector('.card')
+    
+      if (window.innerWidth <= 1280) {
+        card.setAttribute('data-aos-delay', '0') // Delay para mobile
+      }
+    }
+    window.addEventListener('load', updateAosDelay)
+    window.addEventListener('resize', updateAosDelay)
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="{% static 'js/animation.js' %}"></script>
+{% endblock %}

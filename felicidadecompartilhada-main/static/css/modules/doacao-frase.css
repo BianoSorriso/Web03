@@ -1,0 +1,21 @@
+.frase {
+  text-align: center;
+  padding: 40px 0 40px;
+}
+
+.frase .second {
+  color: #D75258;
+  font-family: "Work Sans";
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 6px;
+}
+
+.frase p {
+  color: #070707;
+  font-family: "Cormorant Infant";
+  font-size: 37px;
+  font-weight: 500;
+  line-height: 20.531px;
+  letter-spacing: -0.2px;
+}

@@ -1,0 +1,393 @@
+@import "./geral.css";
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+body {
+  overflow-x: hidden;
+}
+
+
+
+
+.info-dados {
+  background-color: var(--cor-base);
+  margin: 0 auto;
+}
+
+.grid-info-dados-container {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+}
+
+.historia {
+  background-color: #D75258;
+  padding: 80px 320px;
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* justify-items: center; (Removido para alinhar itens) */
+  background-image: url("../../img/");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+
+
+
+.historia ul {
+  padding-left: 60px;
+  height: 130px;
+}
+
+
+.historia ul + ul {
+  border-left: 1px solid #ccc;
+  
+  
+}
+
+
+
+/* Presidente */
+.historia .presidente {
+  grid-column: 2 / 3;
+  margin-top: 40px;
+ /* ou ajuste até alinhar certinho */
+  text-align: left;
+}
+
+.historia .vice-presidente {
+  grid-column: 3 / 4;
+  margin-top: 40px;
+  
+  text-align: left;
+}
+
+
+
+
+
+.historia .presidente,
+.historia .vice-presidente {
+  border: none;
+}
+
+.historia .presidente li,
+.historia .vice-presidente li {
+  font-size: 18px; /* ou o valor que quiser */
+}
+
+
+
+
+.texto-doacao {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), /* overlay mais escuro */
+    url("../../img/Unidos.jpeg");
+  background-size: cover;
+  background-position: center;
+  padding: 120px 20px 120px 120px;
+  font-family: var(--fonte-corpo);
+  font-size: 38px;
+  font-weight: 500;
+  color: #fff;
+  border-right: 3px solid #fff;
+}
+
+.texto-doacao p {
+  margin-bottom: 60px;
+}
+
+
+
+
+.doacao-valores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: max-content max-content;
+  place-content: center;
+  justify-items: center;
+  gap: 20px;
+  padding: 44px;
+}
+
+
+
+
+
+
+
+.doacao-valores ul {
+  color: #fff;
+  align-self: center;
+  display: grid;
+}
+
+.doacao-valores ul li:first-child {
+  max-width: 100%;
+  justify-self: center;
+  align-self: center;
+}
+
+.doacao-valores ul li:nth-child(2) {
+  font-family: var(fonte-titulo);
+  font-size: 38px;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.doacao-valores ul li:nth-child(3) {
+  font-family: var(--fonte-corpo);
+  font-size: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+
+
+@media (max-width: 1640px) {
+  .historia {
+    padding: 80px;
+  }
+}
+@media (max-width: 1270px) {
+  .historia ul {
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .title-dados {
+    font-size: 16px !important;
+  }
+
+  .text-serif-dados {
+    font-size: 14px !important;
+  }
+}
+
+
+
+@media (max-width: 1150px) {
+  .historia {
+    padding: 60px 20px;
+  }
+
+  .historia ul {
+    padding-left: 10px;
+  }
+
+  .title-dados {
+    font-size: 16px;
+  }
+
+  .text-serif-dados {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .historia {
+    padding: 40px 10px;
+  }
+
+  .historia ul {
+    padding-left: 0;
+  }
+}
+
+
+
+/* Padrão desktop grande */
+.historia {
+  padding: 80px clamp(20px, 5vw, 80px);
+}
+
+/* Reduzindo aos poucos */
+@media (max-width: 1400px) {
+  .historia {
+    padding: 60px clamp(15px, 4vw, 60px);
+  }
+  .historia ul {
+    padding-left: 20px;
+  }
+}
+
+/* Tablets ou zoom > 150% */
+@media (max-width: 1000px) {
+  .historia {
+    padding: 40px clamp(10px, 3vw, 40px);
+  }
+  .historia ul {
+    padding-left: 10px;
+  }
+  .title-dados {
+    font-size: 14px;
+  }
+  .text-serif-dados {
+    font-size: 12px;
+  }
+}
+
+/* Smartphones ou zoom 200%+ */
+@media (max-width: 768px) {
+  .historia {
+    padding: 20px clamp(5px, 2vw, 20px);
+    grid-template-columns: 1fr;
+  }
+  .historia ul {
+    padding-left: 0;
+  }
+  .title-dados {
+    font-size: 13px;
+  }
+  .text-serif-dados {
+    font-size: 11px;
+  }
+}
+
+
+
+
+
+@media (max-width: 700px) {
+  .info-dados {
+    padding: 10px 5px;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  /* Container geral com display flex para criar duas colunas */
+  .grid-info-dados-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Cada item vai ocupar metade da largura menos o gap */
+  .grid-info-dados-container > * {
+    flex: 1 1 calc(50% - 10px);
+    box-sizing: border-box;
+    border: none !important; /* remove bordas */
+  }
+
+  .historia {
+    padding: 10px 5px !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: none !important; /* remove bordas */
+  }
+
+  .historia ul {
+    padding-left: 0 !important;
+    margin-bottom: 10px;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: none !important; /* remove bordas */
+  }
+
+  .historia .presidente,
+  .historia .vice-presidente {
+    grid-column: auto !important;
+    margin-top: 15px !important;
+    border: none !important; /* remove todas as bordas */
+    text-align: left !important;
+  }
+
+  .title-dados {
+    font-size: 12px !important;
+    line-height: 1.2;
+  }
+
+  .text-serif-dados {
+    font-size: 10px !important;
+    line-height: 1.2;
+  }
+
+  .texto-doacao {
+    padding: 30px 10px !important;
+    font-size: 18px !important;
+    border: none !important; /* remove bordas */
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .doacao-valores {
+    display: block !important;
+    padding: 20px 10px !important;
+    box-sizing: border-box;
+    border: none !important; /* remove bordas */
+  }
+
+  .doacao-valores ul {
+    margin-bottom: 15px;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: none !important; /* remove bordas */
+  }
+
+  .doacao-valores ul li:nth-child(2) {
+    font-size: 24px !important;
+  }
+
+  .doacao-valores ul li:nth-child(3) {
+    font-size: 14px !important;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .historia ul {
+    padding-left: 30px;
+    height: 110px;
+  }
+
+  .historia ul + ul {
+    border-left: 1px solid #ccc;
+  }
+}
+
+@media (max-width: 768px) {
+  .historia ul {
+    padding-left: 20px;
+    height: auto;
+    text-align: center;
+  }
+
+  .historia ul + ul {
+    border-left: none;
+  }
+
+  .historia .presidente,
+  .historia .vice-presidente {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .historia ul {
+    padding-left: 16px;
+    height: auto;
+  }
+
+  .historia ul + ul {
+    border-left: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .historia ul {
+    padding-left: 12px;
+    height: auto;
+  }
+
+  .historia ul + ul {
+    border-left: none;
+  }
+}
