@@ -186,7 +186,6 @@ def formatar_valor(valor):
 def criar_payload(pagamento):
     """Cria o payload para a solicitação de cobrança."""
     valor_formatado = formatar_valor(pagamento.valor)
-    print(GERENCIANET_PIX_KEY)
     return {
         "calendario": {"expiracao": 3600},
         "devedor": {"cpf": pagamento.cpf, "nome": pagamento.nome},
@@ -280,6 +279,5 @@ def area_restrita(request):
 
 def custom_404(request, exception):
     return render(request, "app/404.html", {"idBody": "doacao"})
-
 
 

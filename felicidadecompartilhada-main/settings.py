@@ -33,7 +33,7 @@ SECRET_KEY = "django-insecure-zl+$=iq002l!br=97u3)d8r2pvo)aa#r^dy(v-w@7xvs_2&2s5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['RodrigoLorenzatto.pythonanywhere.com']
+ALLOWED_HOSTS = ['BianoSorriso.pythonanywhere.com']
 
 LANGUAGE_CODE = 'pt-br'
 
@@ -100,7 +100,7 @@ WSGI_APPLICATION = "wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/RodrigoLorenzatto/ONG_FelicidadeCompartilhada/db.sqlite3',
+        'NAME': '/home/BianoSorriso/ONG_FelicidadeCompartilhada/db.sqlite3',
     }
 }
 
@@ -148,7 +148,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
-MEDIA_ROOT = '/home/RodrigoLorenzatto/ONG_FelicidadeCompartilhada/media'
+MEDIA_ROOT = '/home/BianoSorriso/ONG_FelicidadeCompartilhada/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/RodrigoLorenzatto/ONG_FelicidadeCompartilhada/static'
+STATIC_ROOT = '/home/BianoSorriso/ONG_FelicidadeCompartilhada/static'
 STATIC_URL = '/static/'

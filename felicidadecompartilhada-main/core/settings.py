@@ -21,13 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-$psjgyyfj3nkw!%rsyrm%xzz+ela1r-(6%j2jz-6u$t&ftv0wq"
+SECRET_KEY = os.getenv(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-$psjgyyfj3nkw!%rsyrm%xzz+ela1r-(6%j2jz-6u$t&ftv0wq",
+)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ["*"]
+_allowed_hosts_env = os.getenv("ALLOWED_HOSTS")
+if _allowed_hosts_env:
+    ALLOWED_HOSTS = [
+        host.strip() for host in _allowed_hosts_env.split(",") if host.strip()
+    ]
+else:
+    ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -148,9 +155,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
-STRIPE_PUBLIC_KEY = os.getenv('PUBLIC_KEY_STRIPE_API')
-STRIPE_SECRET_KEY = os.getenv('SECRET_KEY_STRIPE_API')
-
 SITE_ID = 1
-
